@@ -8,6 +8,7 @@ import SubNavigation from '@/components/elements/SubNavigation';
 import { useLocation } from 'react-router';
 import Spinner from '@/components/elements/Spinner';
 import routes from '@/routers/routes';
+import FreeServersContainer from '@/components/dashboard/freeservers/FreeServersContainer';
 
 export default () => {
     const location = useLocation();
@@ -39,6 +40,9 @@ export default () => {
                                 <Component />
                             </Route>
                         ))}
+                        <Route path={'/freeservers'} exact>
+	                        <FreeServersContainer />
+                        </Route>
                         <Route path={'*'}>
                             <NotFound />
                         </Route>

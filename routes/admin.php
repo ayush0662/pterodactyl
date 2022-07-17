@@ -226,3 +226,28 @@ Route::group(['prefix' => 'nests'], function () {
     Route::delete('/egg/{egg:id}', [Admin\Nests\EggController::class, 'destroy']);
     Route::delete('/egg/{egg:id}/variables/{variable:id}', [Admin\Nests\EggVariableController::class, 'destroy']);
 });
+
+
+/*
+|--------------------------------------------------------------------------
+| Free Servers Controller Controller Routes
+|--------------------------------------------------------------------------
+|
+| Endpoint: /freeservers
+|
+*/
+Route::group(['prefix' => '/freeservers'], function () {
+    Route::get('/', [Admin\FreeServersController::class, 'index'])->name('admin.freeservers');
+    Route::get('/create', [Admin\FreeServersController::class, 'new'])->name('admin.freeservers.create');
+
+    Route::post('/create', [Admin\FreeServersController::class, 'create']);
+    Route::post('/settings', [Admin\FreeServersController::class, 'settings'])->name('admin.freeservers.settings');
+
+    Route::delete('/delete', [Admin\FreeServersController::class, 'delete'])->name('admin.freeservers.delete');
+
+    Route::group(['prefix' => '/{id}'], function() {
+        Route::get('/', [Admin\FreeServersController::class, 'view'])->name('admin.freeservers.view');
+
+        Route::post('/', [Admin\FreeServersController::class, 'edit']);
+    });
+});

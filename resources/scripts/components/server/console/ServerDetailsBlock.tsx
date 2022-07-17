@@ -15,6 +15,7 @@ import UptimeDuration from '@/components/server/UptimeDuration';
 import StatBlock from '@/components/server/console/StatBlock';
 import useWebsocketEvent from '@/plugins/useWebsocketEvent';
 import classNames from 'classnames';
+import RenewBox from '@/components/dashboard/freeservers/RenewBox';
 import { capitalize } from '@/lib/strings';
 
 type Stats = Record<'memory' | 'cpu' | 'disk' | 'uptime' | 'rx' | 'tx', number>;
@@ -133,6 +134,7 @@ const ServerDetailsBlock = ({ className }: { className?: string }) => {
             <StatBlock icon={faCloudUploadAlt} title={'Network (Outbound)'}>
                 {status === 'offline' ? <span className={'text-gray-400'}>Offline</span> : bytesToString(stats.tx)}
             </StatBlock>
+            <RenewBox />
         </div>
     );
 };

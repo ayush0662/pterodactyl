@@ -12,7 +12,8 @@ import tw from 'twin.macro';
 import useSWR from 'swr';
 import { PaginatedResult } from '@/api/http';
 import Pagination from '@/components/elements/Pagination';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import Button from '@/components/elements/Button';
 
 export default () => {
     const { search } = useLocation();
@@ -50,6 +51,13 @@ export default () => {
 
     return (
         <PageContentBlock title={'Dashboard'} showFlashKey={'dashboard'}>
+            
+            <div css={tw`mb-2 flex justify-end items-center`}>
+                <NavLink to={'/freeservers'} exact>
+                    <Button color="primary">Get Free Server</Button>
+                </NavLink>
+            </div>
+            
             {rootAdmin && (
                 <div css={tw`mb-2 flex justify-end items-center`}>
                     <p css={tw`uppercase text-xs text-neutral-400 mr-2`}>
